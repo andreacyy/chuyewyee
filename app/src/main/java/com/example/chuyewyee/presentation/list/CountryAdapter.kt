@@ -7,19 +7,24 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chuyewyee.R
 
-class CountryAdapter(private var dataSet: List<Country>) :
+class CountryAdapter(private var dataSet: List<Country>, val listener: (Country) -> Unit? = null) :
         RecyclerView.Adapter<CountryAdapter.ViewHolder>() {
+
+
 
         /**
          * Provide a reference to the type of views that you are using
          * (custom ViewHolder).
          */
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val textView: TextView
+           val textView: TextView
 
             init {
                 // Define click listener for the ViewHolder's View.
                 textView = view.findViewById(R.id.country_name)
+                textView.setOnClickListener{
+                    listener?.invoke(Country)
+                }
             }
         }
 
@@ -44,6 +49,7 @@ class CountryAdapter(private var dataSet: List<Country>) :
             // contents of the view with that element
             val country : Country = dataSet[position]
             viewHolder.textView.text = country.name
+            viewHolder.itemView.setOnClickListener {  }
         }
 
         // Return the size of your (invoked by the layout manager)
