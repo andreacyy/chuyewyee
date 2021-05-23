@@ -6,10 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chuyewyee.R
-import com.example.esiea3a.presentation.list.Pokemon
 
-class PokemonAdapter(private var dataSet: List<Pokemon>) :
-        RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
+class CountryAdapter(private var dataSet: List<Country>) :
+        RecyclerView.Adapter<CountryAdapter.ViewHolder>() {
 
         /**
          * Provide a reference to the type of views that you are using
@@ -20,11 +19,11 @@ class PokemonAdapter(private var dataSet: List<Pokemon>) :
 
             init {
                 // Define click listener for the ViewHolder's View.
-                textView = view.findViewById(R.id.pokemon_name)
+                textView = view.findViewById(R.id.country_name)
             }
         }
 
-        fun updateList(list: List<Pokemon>){
+        fun updateList(list: List<Country>){
             dataSet = list
             notifyDataSetChanged()
         }
@@ -33,7 +32,7 @@ class PokemonAdapter(private var dataSet: List<Pokemon>) :
         override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
             // Create a new view, which defines the UI of the list item
             val view = LayoutInflater.from(viewGroup.context)
-                .inflate(R.layout.pokemon_item, viewGroup, false)
+                .inflate(R.layout.country_item, viewGroup, false)
 
             return ViewHolder(view)
         }
@@ -43,8 +42,8 @@ class PokemonAdapter(private var dataSet: List<Pokemon>) :
 
             // Get element from your at this position and replace the
             // contents of the view with that element
-            val pokemon : Pokemon = dataSet[position]
-            viewHolder.textView.text = pokemon.name
+            val country : Country = dataSet[position]
+            viewHolder.textView.text = country.name
         }
 
         // Return the size of your (invoked by the layout manager)

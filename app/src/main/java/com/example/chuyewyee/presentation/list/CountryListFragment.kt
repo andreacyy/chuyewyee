@@ -5,20 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chuyewyee.R
-import com.example.esiea3a.presentation.list.Pokemon
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class PokemonListFragment : Fragment() {
+class CountryListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    private val adapter = PokemonAdapter(arrayListOf())
+    private val adapter = CountryAdapter(arrayListOf())
     private val layoutManager = LinearLayoutManager (context)
 
     override fun onCreateView(
@@ -26,26 +23,26 @@ class PokemonListFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pokemon_list, container, false)
+        return inflater.inflate(R.layout.fragment_country_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView =  view.findViewById(R.id.pokemon_recyclerview)
+        recyclerView =  view.findViewById(R.id.country_recyclerview)
 
         recyclerView.apply {
-            layoutManager = this@PokemonListFragment.layoutManager
-            adapter = this@PokemonListFragment.adapter
+            layoutManager = this@CountryListFragment.layoutManager
+            adapter = this@CountryListFragment.adapter
         }
 
-        val pokeList = arrayListOf<Pokemon>().apply {
-            add(Pokemon("Pickachu"))
-            add(Pokemon("Salameche"))
-            add(Pokemon("Carapuce"))
-            add(Pokemon("Herbizarre"))
+        val countryList = arrayListOf<Country>().apply {
+            add(Country("France"))
+            add(Country("Italie"))
+            add(Country("Finlande"))
+            add(Country("Suisse"))
         }
-            adapter.updateList(pokeList)
+            adapter.updateList(countryList)
         }
 
     }
